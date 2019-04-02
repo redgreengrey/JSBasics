@@ -1,19 +1,22 @@
-let str = "У попа была собака";
-const ignore = ["?", "!", ":", ";", ",", ".", " ", "\t", "\r"];
-let letters = {}, result;
-let words = str.split(' ');
+function charRemover() {
+    let str = document.getElementById("inputString").value;
+    const ignore = ["?", "!", ":", ";", ",", ".", " ", "\t", "\r"];
+    let letters = {}, result;
 
-words.forEach(function (word){
-    word.split('').forEach(function (char, index) {
-        let lower = char.toLowerCase();
-        if (!letters[lower] && ignore.indexOf(lower) === -1 && word.indexOf(lower, index + 1) !== -1) {
-            letters[lower] = 1;
-        }
+    let words = str.split(' ');
+    words.forEach(function (word){
+        word.split('').forEach(function (char, index) {
+            let lower = char.toLowerCase();
+            if (!letters[lower] && ignore.indexOf(lower) === -1 && word.indexOf(lower, index + 1) !== -1) {
+                letters[lower] = 1;
+            }
+        });
+
     });
-});
 
-result = str.split('').filter(function(v) {
-    return !letters[v.toLowerCase()];
-}).join('');
-
-alert(result.trim());
+    result = str.split('').filter(function(v) {
+        return !letters[v.toLowerCase()];
+    }).join('');
+    // return result;
+    document.getElementById("outString").value = result;
+}

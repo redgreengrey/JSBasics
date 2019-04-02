@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Char Remover</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <script src="script.js"></script>
+<div class="parent">
+
+    <div class="innerInput">
+
+        <label class="stringBlock" for="inputString"><b>Char remover</b>
+            <br>
+            <input type="text" placeholder="Enter string" id="inputString" class="stringBlock">
+        </label>
+
+        <label class="outString" for="outString">
+            <br>
+            <input id="outString" class="stringBlock">
+        </label>
+        <button onclick="charRemover()">Remove chars</button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
 </body>
 </html>
