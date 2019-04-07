@@ -30,18 +30,15 @@ body {
     margin: 250px auto;
     border-radius: 15px;
     box-shadow: 0 0 5px darkorange;
-
     padding: 30px 15px;
 
 }
 
 button,
 .stringBlock {
-    /*background-color: green;*/
     margin-top: 10px;
     margin-left: 50px;
     width: 80%;
     height: 25px;
-
     border-radius: 5px;
 }
