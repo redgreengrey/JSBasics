@@ -1,0 +1,136 @@
+body {
+    /*position: relative;*/
+    background-color: #022E3A;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.IconInCircle {
+    grid-area: IconInCircle;
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    align-self: center;
+    border-radius: 50%;
+    background: #A1855B;
+    margin: 100px 0 0 0;
+}
+
+img{
+    width: 70%;
+    margin: 20px 20px;
+}
+
+.CalcPanel {
+    grid-area: CalcPanel;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    align-self: center;
+    background: #A1855B;
+    border-radius: 15px;
+    margin-top: 386px;
+}
+
+.CalcPanelInner {
+    grid-area: CalcPanelInner;
+    padding-top: 35px;
+}
+
+.calcName {
+    position: absolute;
+    width: 200px;
+    height: 33px;
+    left: calc(50% - 200px/2);
+    top: calc(50% - 33px/2 - 10px);
+
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 33px;
+    color: #000000;
+}
+
+.inputExpression,
+.outputResultClass,
+.resultButton {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+input {
+    width: 300px;
+    height: 35px;
+    border-radius: 15px;
+    font-size: 18px;
+    background: #C1D1D3;
+    text-align: center;
+
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+b {
+    font-size: 20px;
+    padding-left: 60px;
+}
+
+button {
+    width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 15px;
+    margin-left: 50px;
+    background: #C1D1D3;
+
+    font-family: Oswald;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
