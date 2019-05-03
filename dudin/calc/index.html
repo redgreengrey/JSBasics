@@ -10,32 +10,34 @@
 
 <div class="container">
 
-    <div class="IconInCircle">
-        <img src="../../resources/12.png"/>
+    <div class="icon-in-circle">
+        <img class="icon" src="images/12.png">
     </div>
 
-    <div class="CalcPanel">
+    <div class="calc-panel">
 
-        <div class="CalcPanelInner">
+        <div class="calc-panel-inner">
 
-            <label class="inputExpression" for="Expression"><b>Sequential Calculator</b>
-                <br>
-                <br>
-                <input type="text" placeholder="Enter expression" id="Expression" class="inputExpression">
-            </label>
-
-            <br>
-
-            <label class="outputResultClass" for="outputResult">
-                <br>
-                <input type="text" id="outputResult" class="outputResultClass"><br>
-            </label>
-
-            <br>
-            <br>
-
-            <div class="resultButton" id="ButtonId">
-                <button onclick="notEval()">Get Result</button>
+            <div>
+                <label class="label-input-expression" for="Expression"><b>Sequential Calculator</b>
+                    <!--<br>-->
+                    <!--<br>-->
+                    <div><input type="text" placeholder="Enter expression" id="Expression" class="input-expression">
+                    </div>
+                </label>
+            </div>
+            <!--<br>-->
+            <div>
+                <label class="output-result" for="outputResult">
+                    <!--<br>-->
+                    <input type="text" id="outputResult" class="output-result"><br>
+                </label>
+            </div>
+            <!--<br>-->
+            <!--<br>-->
+            <!--            -->
+            <div class="result-button-container" id="button-id">
+                <button class="result-button" onclick="notEval()">Get Result</button>
             </div>
 
         </div>
