@@ -1,44 +1,70 @@
-function notEval() {
-    let str = document.getElementById("Expression").value;
-    str = str.replace(/\s/g, '');
-    str = str.replace(/\=/g, '');
+function sequenceCalculate() {
+    let expression = document.getElementById("Expression").value;
+    let lastChar = expression[expression.length - 1];
+    let output = document.getElementById("outputResult");
+    let incorrectInput = "Enter correct expression";
 
-    let chars = str.split("");
-    let n = [], op = [], index = 0, oplast = true;
+    expression = expression.replace(/\s=/g, '');
 
-    n[index] = "";
+    let chars = expression.split(""),
+        numbers = [],
+        operators = [],
+        index = 0,
+        isOperatorLast = true;
+    let lettersRegex = /[A-zА-я]/g,
+        found = expression.match(lettersRegex);
 
-    for (let c = 0; c < chars.length; c++) {
+    if (lastChar !== '=' || found !== null) {
+        output.value = incorrectInput;
+    } else {
+        numbers[index] = "";
 
-        if (isNaN(parseInt(chars[c])) && chars[c] !== "." && !oplast) {
-            op[index] = chars[c];
-            index++;
-            n[index] = "";
-            oplast = true;
+        for (let i = 0; i < chars.length; i++) {
+            if (isNaN(parseInt(chars[i])) && chars[i] !== "." && !isOperatorLast) {
+                operators[index] = chars[i];
+                index++;
+                numbers[index] = "";
+                isOperatorLast = true;
+            } else {
+                numbers[index] += chars[i];
+                isOperatorLast = false;
+            }
+        }
+
+        let result = parseFloat(parse(operators, numbers).toFixed(2));
+        if (isNaN(result)) {
+            output.value = incorrectInput;
         } else {
-            n[index] += chars[c];
-            oplast = false;
+            output.value = parse(operators, numbers).toFixed(2);
         }
     }
+}
 
-    string = parseFloat(n[0]);
-    for (let o = 0; o < op.length; o++) {
-        let num = parseFloat(n[o + 1]);
-        switch (op[o]) {
+function parse(operators, numbers) {
+    let string = parseFloat(numbers[0]);
+    for (let i = 0; i < operators.length; i++) {
+        let number = parseFloat(numbers[i + 1]);
+        switch (operators[i]) {
             case "+":
-                string += num;
+                string += number;
                 break;
             case "-":
-                string -= num;
+                string -= number;
                 break;
             case "*":
-                string *= num;
+                string *= number;
                 break;
             case "/":
-                string /= num;
+                string /= number;
                 break;
         }
     }
-
-    document.getElementById("outputResult").value = string.toFixed(2);
+    return string;
 }
+
+document.getElementById("Expression").addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("button-id").click();
+    }
+});
