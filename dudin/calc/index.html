@@ -20,24 +20,18 @@
 
             <div>
                 <label class="label-input-expression" for="Expression"><b>Sequential Calculator</b>
-                    <!--<br>-->
-                    <!--<br>-->
-                    <div><input type="text" placeholder="Enter expression" id="Expression" class="input-expression">
-                    </div>
+                    <input type="text" placeholder="Enter expression" id="Expression" class="input-expression">
                 </label>
             </div>
-            <!--<br>-->
+
             <div>
                 <label class="output-result" for="outputResult">
-                    <!--<br>-->
-                    <input type="text" id="outputResult" class="output-result"><br>
+                    <input type="text" id="outputResult" class="output-result" readonly>
                 </label>
             </div>
-            <!--<br>-->
-            <!--<br>-->
-            <!--            -->
-            <div class="result-button-container" id="button-id">
-                <button class="result-button" onclick="notEval()">Get Result</button>
+
+            <div class="result-button-container" id="button-container">
+                <button class="result-button" onclick="sequenceCalculate()" id="button-id">Get Result</button>
             </div>
 
         </div>

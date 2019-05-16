@@ -8,6 +8,7 @@ body {
 }
 
 .icon-in-circle {
+    margin-top: 100px;
     position: absolute;
     width: 140px;
     height: 140px;
@@ -15,6 +16,7 @@ body {
     border-radius: 50%;
     background: #A1855B;
 }
+
 .icon {
     width: 70%;
     margin: 20px 20px;
@@ -31,16 +33,18 @@ body {
 }
 
 .calc-panel-inner {
+    display: block;
     margin-top: 35px;
     margin-left: 100px;
 }
 
-.label-input-expression{
+.label-input-expression {
     margin-left: 75px;
 }
 
 .input-expression {
     margin-top: 20px;
+    padding: 0;
     width: 300px;
     height: 35px;
     border-radius: 15px;
@@ -55,6 +59,7 @@ body {
 
 .output-result {
     margin-top: 20px;
+    padding: 0;
     width: 300px;
     height: 35px;
     border-radius: 15px;
