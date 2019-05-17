@@ -1,8 +1,8 @@
 function sequenceCalculate() {
-    let expression = document.getElementById("Expression").value;
-    let lastChar = expression[expression.length - 1];
-    let output = document.getElementById("outputResult");
-    let incorrectInput = "Enter correct expression";
+    let expression = document.getElementById("Expression").value,
+    lastChar = expression[expression.length - 1],
+    output = document.getElementById("outputResult"),
+    incorrectInput = 'Expression must contains "=" at the end';
 
     expression = expression.replace(/\s=/g, '');
 
@@ -10,8 +10,8 @@ function sequenceCalculate() {
         numbers = [],
         operators = [],
         index = 0,
-        isOperatorLast = true;
-    let lettersRegex = /[A-zА-я]/g,
+        isOperatorLast = true,
+        lettersRegex = /[A-zА-я]/g,
         found = expression.match(lettersRegex);
 
     if (lastChar !== '=' || found !== null) {
@@ -31,16 +31,16 @@ function sequenceCalculate() {
             }
         }
 
-        let result = parseFloat(parse(operators, numbers).toFixed(2));
+        let result = parseFloat(parseString(operators, numbers).toFixed(2));
         if (isNaN(result)) {
             output.value = incorrectInput;
         } else {
-            output.value = parse(operators, numbers).toFixed(2);
+            output.value = parseString(operators, numbers).toFixed(2);
         }
     }
 }
 
-function parse(operators, numbers) {
+function parseString(operators, numbers) {
     let string = parseFloat(numbers[0]);
     for (let i = 0; i < operators.length; i++) {
         let number = parseFloat(numbers[i + 1]);
