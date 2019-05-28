@@ -16,7 +16,7 @@ body {
     overflow: auto;
 }
 
-.innerInput {
+.inner-input {
     background-color: aliceblue;
     width: 640px;
     height: 150px;
