@@ -1,7 +1,7 @@
 html,
 body {
     height: 100%;
-    background-color: lightblue;
+    background-color: darkslateblue;
 }
 
 .main-container{
@@ -25,17 +25,23 @@ body {
 
 .subject-info-box-1 select,
 .subject-info-box-2 select {
-    min-width: 100px;
-    height: 194px;
-    padding: 0;
-    border: 1px solid blue;
+    min-width: 240px;
+    height: 355px;
+    border: 9px solid white;
     background-color: lightgrey;
-    overflow: auto;
     border-radius: 10px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    font-family: SansSerif, serif;
+    font-size: 1.6em;
+    text-align: center;
+    outline: none;
 }
 
 .subject-info-box-1 select option,
 .subject-info-box-2 select option {
+    margin: 3px;
     padding: 4px 10px 4px 10px;
 }
 
@@ -46,12 +52,29 @@ body {
 }
 
 .subject-info-arrows {
+    margin-left: 130px;
     min-width: 100px;
 }
 
 .subject-info-arrows input {
-    width: 40px;
-    margin-bottom: 5px;
-    border-radius: 15px;
-    background-color: wheat;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    font: 10px sans-serif;
+    font-size: 1em;
+    height: 40px;
+    width: 60px;
+    border-radius: 1.25em;
+    background: #444444;
+    outline: none;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+select option:checked,
+select option:hover {
+    box-shadow: 0 0 10px 100px darkslateblue inset;
+}
+
+.subject-info-arrows input:active {
+    background: #999;
 }

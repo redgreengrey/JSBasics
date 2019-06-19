@@ -1,42 +1,69 @@
-(function () {
-    $('#btnRight').click(function (e) {
-        var selectedOpts = $('#lstBox1 option:selected');
-        if (selectedOpts.length === 0) {
-            alert("Nothing to move.");
-            e.preventDefault();
+let btnRight = document.getElementById("btnRight");
+let btnLeft = document.getElementById("btnLeft");
+let btnAllRight = document.getElementById("btnAllRight");
+let btnAllLeft = document.getElementById("btnAllLeft");
+
+btnRight.addEventListener("click", () => {
+    moveAcross("lstBox1", 'lstBox2');
+}, false);
+btnLeft.addEventListener("click", () => {
+    moveAcross('lstBox2', 'lstBox1');
+}, false);
+btnAllRight.addEventListener('click', () => {
+    moveAll('lstBox1', 'lstBox2');
+}, false);
+btnAllLeft.addEventListener('click', () => {
+    moveAll('lstBox2', 'lstBox1');
+}, false);
+
+function moveAcross(sourceID, destID) {
+    let src = document.getElementById(sourceID);
+    let dest = document.getElementById(destID);
+    if (src.options.selectedIndex === -1) {
+        alert('Nothing to move!!!');
+        return;
+    }
+    for (let count = 0; count < src.options.length; count++) {
+        if (src.options[count].selected === true) {
+            let option = src.options[count];
+            let newOption = document.createElement("option");
+            newOption.value = option.value;
+            newOption.text = option.text;
+            dest.add(newOption, null);
+            src.remove(count, null);
+            count--;
         }
-        $('#lstBox2').append($(selectedOpts).clone());
-        $(selectedOpts).remove();
-        e.preventDefault();
-    });
-    $('#btnAllRight').click(function (e) {
-        var selectedOpts = $('#lstBox1 option');
-        if (selectedOpts.length === 0) {
-            alert("Nothing to move.");
-            e.preventDefault();
-        }
-        $('#lstBox2').append($(selectedOpts).clone());
-        $(selectedOpts).remove();
-        e.preventDefault();
-    });
-    $('#btnLeft').click(function (e) {
-        var selectedOpts = $('#lstBox2 option:selected');
-        if (selectedOpts.length === 0) {
-            alert("Nothing to move.");
-            e.preventDefault();
-        }
-        $('#lstBox1').append($(selectedOpts).clone());
-        $(selectedOpts).remove();
-        e.preventDefault();
-    });
-    $('#btnAllLeft').click(function (e) {
-        var selectedOpts = $('#lstBox2 option');
-        if (selectedOpts.length === 0) {
-            alert("Nothing to move.");
-            e.preventDefault();
-        }
-        $('#lstBox1').append($(selectedOpts).clone());
-        $(selectedOpts).remove();
-        e.preventDefault();
-    });
-}(jQuery));
+    }
+
+}
+
+function moveAll(sourceID, destID) {
+    let src = document.getElementById(sourceID);
+    let dest = document.getElementById(destID);
+    if (src.options.length === 0) {
+        alert('Nothing to move!!!');
+        return;
+    }
+    for (let i = 0; i < src.options.length; i++) {
+        src.options[i].setAttribute("selected", '');
+    }
+    for (let count = 0; count < src.options.length; count++) {
+        let option = src.options[count];
+        let newOption = document.createElement("option");
+        newOption.value = option.value;
+        newOption.text = option.text;
+        dest.add(newOption, null);
+        src.remove(count, null);
+        count--;
+    }
+}
+
+function create() {
+    let option = src.options[count];
+    let newOption = document.createElement("option");
+    newOption.value = option.value;
+    newOption.text = option.text;
+    dest.add(newOption, null);
+    src.remove(count, null);
+    count--;
+}
