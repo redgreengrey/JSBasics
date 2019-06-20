@@ -26,9 +26,7 @@ function moveAcross(sourceID, destID) {
     for (let count = 0; count < src.options.length; count++) {
         if (src.options[count].selected === true) {
             let option = src.options[count];
-            let newOption = document.createElement("option");
-            newOption.value = option.value;
-            newOption.text = option.text;
+            let newOption = createOption(option);
             dest.add(newOption, null);
             src.remove(count, null);
             count--;
@@ -49,21 +47,16 @@ function moveAll(sourceID, destID) {
     }
     for (let count = 0; count < src.options.length; count++) {
         let option = src.options[count];
-        let newOption = document.createElement("option");
-        newOption.value = option.value;
-        newOption.text = option.text;
+        let newOption = createOption(option);
         dest.add(newOption, null);
         src.remove(count, null);
         count--;
     }
 }
 
-function create() {
-    let option = src.options[count];
+function createOption(option) {
     let newOption = document.createElement("option");
     newOption.value = option.value;
     newOption.text = option.text;
-    dest.add(newOption, null);
-    src.remove(count, null);
-    count--;
+    return newOption;
 }
