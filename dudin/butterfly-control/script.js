@@ -2,23 +2,23 @@ let btnRight = document.getElementById("btnRight");
 let btnLeft = document.getElementById("btnLeft");
 let btnAllRight = document.getElementById("btnAllRight");
 let btnAllLeft = document.getElementById("btnAllLeft");
+let firstSelect = document.getElementById("lstBox1");
+let secondSelect = document.getElementById("lstBox2");
 
 btnRight.addEventListener("click", () => {
-    moveAcross("lstBox1", 'lstBox2');
-}, false);
+    moveAcross(firstSelect, secondSelect);
+});
 btnLeft.addEventListener("click", () => {
-    moveAcross('lstBox2', 'lstBox1');
-}, false);
+    moveAcross(secondSelect, firstSelect);
+});
 btnAllRight.addEventListener('click', () => {
-    moveAll('lstBox1', 'lstBox2');
-}, false);
+    moveAll(firstSelect, secondSelect);
+});
 btnAllLeft.addEventListener('click', () => {
-    moveAll('lstBox2', 'lstBox1');
-}, false);
+    moveAll(secondSelect, firstSelect);
+});
 
-function moveAcross(sourceID, destID) {
-    let src = document.getElementById(sourceID);
-    let dest = document.getElementById(destID);
+function moveAcross(src, dest) {
     if (src.options.selectedIndex === -1) {
         alert('Nothing to move!!!');
         return;
@@ -26,37 +26,32 @@ function moveAcross(sourceID, destID) {
     for (let count = 0; count < src.options.length; count++) {
         if (src.options[count].selected === true) {
             let option = src.options[count];
-            let newOption = createOption(option);
+            let newOption = document.createElement("option");
+            newOption.value = option.value;
+            newOption.text = option.text;
             dest.add(newOption, null);
+            if (newOption.selected === true) {
+                newOption.setAttribute("selected", '');
+            }
             src.remove(count, null);
             count--;
         }
     }
-
 }
 
-function moveAll(sourceID, destID) {
-    let src = document.getElementById(sourceID);
-    let dest = document.getElementById(destID);
+function moveAll(src, dest) {
     if (src.options.length === 0) {
         alert('Nothing to move!!!');
         return;
     }
-    for (let i = 0; i < src.options.length; i++) {
-        src.options[i].setAttribute("selected", '');
-    }
     for (let count = 0; count < src.options.length; count++) {
+        src.options[count].setAttribute("selected", '');
         let option = src.options[count];
-        let newOption = createOption(option);
+        let newOption = document.createElement("option");
+        newOption.value = option.value;
+        newOption.text = option.text;
         dest.add(newOption, null);
         src.remove(count, null);
         count--;
     }
-}
-
-function createOption(option) {
-    let newOption = document.createElement("option");
-    newOption.value = option.value;
-    newOption.text = option.text;
-    return newOption;
 }
