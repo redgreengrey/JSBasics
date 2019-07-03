@@ -4,7 +4,7 @@ body {
     background-color: darkslateblue;
 }
 
-.main-container{
+.first-page-main-container{
     height: 100%;
     min-width: 500px;
     display: flex;

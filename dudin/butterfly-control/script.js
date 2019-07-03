@@ -5,38 +5,23 @@ let btnAllLeft = document.getElementById("btnAllLeft");
 let firstSelect = document.getElementById("lstBox1");
 let secondSelect = document.getElementById("lstBox2");
 
-btnRight.addEventListener("click", () => {
-    moveAcross(firstSelect, secondSelect);
-});
-btnLeft.addEventListener("click", () => {
-    moveAcross(secondSelect, firstSelect);
-});
-btnAllRight.addEventListener('click', () => {
-    moveAll(firstSelect, secondSelect);
-});
-btnAllLeft.addEventListener('click', () => {
-    moveAll(secondSelect, firstSelect);
-});
+btnRight.addEventListener("click", () => moveAcross(firstSelect, secondSelect));
+btnLeft.addEventListener("click", () => moveAcross(secondSelect, firstSelect));
+btnAllRight.addEventListener('click', () => moveAll(firstSelect, secondSelect));
+btnAllLeft.addEventListener('click', () => moveAll(secondSelect, firstSelect));
 
 function moveAcross(src, dest) {
     if (src.options.selectedIndex === -1) {
         alert('Nothing to move!!!');
         return;
     }
-    for (let count = 0; count < src.options.length; count++) {
-        if (src.options[count].selected === true) {
-            let option = src.options[count];
-            let newOption = document.createElement("option");
-            newOption.value = option.value;
-            newOption.text = option.text;
-            dest.add(newOption, null);
-            if (newOption.selected === true) {
-                newOption.setAttribute("selected", '');
-            }
-            src.remove(count, null);
-            count--;
+    Array.from(src.options).forEach(option => {
+        if (option.selected) {
+            dest.add(option);
         }
-    }
+    });
+    src.selectedIndex = -1;
+    dest.selectedIndex = -1;
 }
 
 function moveAll(src, dest) {
@@ -45,13 +30,10 @@ function moveAll(src, dest) {
         return;
     }
     for (let count = 0; count < src.options.length; count++) {
-        src.options[count].setAttribute("selected", '');
-        let option = src.options[count];
-        let newOption = document.createElement("option");
-        newOption.value = option.value;
-        newOption.text = option.text;
-        dest.add(newOption, null);
-        src.remove(count, null);
-        count--;
+        Array.from(src.options).forEach(option => {
+           dest.add(option);
+        });
+        src.selectedIndex = -1;
+        dest.selectedIndex = -1;
     }
 }
