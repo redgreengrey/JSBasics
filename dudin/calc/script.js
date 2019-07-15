@@ -1,8 +1,8 @@
 function sequenceCalculate() {
     let expression = document.getElementById("Expression").value,
-    lastChar = expression[expression.length - 1],
-    output = document.getElementById("outputResult"),
-    incorrectInput = 'Expression must contains "=" at the end';
+        lastChar = expression[expression.length - 1],
+        output = document.getElementById("outputResult"),
+        incorrectInput = 'Expression must contains "=" at the end';
 
     expression = expression.replace(/\s=/g, '');
 
