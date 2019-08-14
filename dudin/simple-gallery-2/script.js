@@ -1,8 +1,8 @@
 function script(ticksCount) {
-    let nextPage = getOtherPageUrl(true);
-    let prevPage = getOtherPageUrl(false);
+    const nextPage = getOtherPageUrl(true);
+    const prevPage = getOtherPageUrl(false);
     let timerId;
-    let timerArea = document.querySelector('#timerArea');
+    const timerArea = document.querySelector('#timerArea');
 
     let tick = 0;
 
