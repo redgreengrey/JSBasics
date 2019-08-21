@@ -75,19 +75,28 @@ let initialList = [
 
 const discountButton = document.getElementById('discountButton');
 
-let redusedList = initialList.reduce((accumulator, currentElement) => {
-    if (!!currentElement.price && currentElement.price < 80) {
-        accumulator.push({...currentElement, discount: true});
-    }
-    return accumulator;
-}, []);
+let getReducedList = function (list) {
+    return list.reduce((accumulator, currentElement) => {
+        if (!!currentElement.price && currentElement.price < 80) {
+            accumulator.push({...currentElement, discount: true});
+        }
+        return accumulator;
+    }, []);
+};
 
-let resultWithNoReduce = [];
-for (let item of initialList) {
-    if (item.price < 80) {
-        resultWithNoReduce.push({...item, discount: true});
+let getDiscountList = function (list) {
+    let result = [];
+    for (let item of list) {
+        if (item.price < 80) {
+            result.push({...item, discount: true});
+        }
     }
-}
+    return result;
+};
+
+let getDiscountedListByMap = function (list) {
+    return list.filter(item => item.price < 80).map(item => ({...item, discount: true}));
+};
 
 function createList(ID, itemsList) {
     let element = document.getElementById(ID);
@@ -106,8 +115,8 @@ function createList(ID, itemsList) {
 createList('productsList', initialList);
 
 function showDiscountProducts(event) {
-    console.log(event);
-    createList('discountList', redusedList);
+    createList('discountList', getReducedList(initialList));
+    getReducedList(initialList).forEach(item => console.log(item));
     event.target.disabled = true;
 }
 
